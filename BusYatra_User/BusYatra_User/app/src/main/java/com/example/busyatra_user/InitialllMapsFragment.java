@@ -31,7 +31,7 @@ public class InitialllMapsFragment extends Fragment implements OnMapReadyCallbac
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_inittal__maps, container, false);
+        View view = inflater.inflate(R.layout.fragment_initialll_maps, container, false);
 
         // Initialize the FusedLocationProviderClient
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         b1 = (Button) findViewById(R.id.button);
-        b2 = (Button) findViewById(R.id.button2);
+       // b2 = (Button) findViewById(R.id.button2);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
         SharedPreferences settings = getApplicationContext().getSharedPreferences("UserData", 0);
@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        b2.setOnClickListener(new View.OnClickListener() {
+        /*b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Sign_up_Activity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
     }

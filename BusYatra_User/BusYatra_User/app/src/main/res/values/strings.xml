@@ -3,4 +3,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_bus_location">Bus_location</string>
+    <string-array name="autocomplete_suggestions">
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Cherry</item>
+        <item>Durian</item>
+        <!-- Add more autocomplete suggestions here -->
+    </string-array>
 </resources>

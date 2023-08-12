@@ -1,92 +1,137 @@
 package com.example.busyatra_user;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class SearchFragment extends Fragment {
 
-    ImageButton exit;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public SearchFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    AutoCompleteTextView autoCompleteTextView;
+    RecyclerView recyclerView;
+    SearchResultAdapter adapter;
+    List<SearchResultItem> searchResults;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search, container, false);
 
-        exit = (ImageButton) root.findViewById(R.id.exit_bt);
+        autoCompleteTextView = root.findViewById(R.id.autoCompleteTextView);
+        recyclerView = root.findViewById(R.id.searchResultsRecyclerView);
 
-        exit.setOnClickListener(new View.OnClickListener() {
+        // Initialize the search results list and RecyclerView adapter
+        searchResults = new ArrayList<>();
+        adapter = new SearchResultAdapter(searchResults);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+
+        autoCompleteTextView.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                replaceFragment2(new HomeFragment());
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Call a method to fetch search results based on the user's input
+                // and update the searchResults list accordingly.
+                // For example, you could use a network call or a local search function.
+
+                // Dummy data for demonstration:
+                List<SearchResultItem> newSearchResults = new ArrayList<>();
+                newSearchResults.add(new SearchResultItem(R.drawable.search_icon, "Result 1"));
+                newSearchResults.add(new SearchResultItem(R.drawable.search_icon, "Result 2"));
+                newSearchResults.add(new SearchResultItem(R.drawable.search_icon, "Result 3"));
+                updateSearchResults(newSearchResults);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
             }
         });
 
         return root;
     }
 
-    private void replaceFragment2(Fragment fragment) {
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(
-                        R.anim.side_in_from_bottom,
-                        R.anim.fadeout
-                )
-                .replace(R.id.Frg_1, fragment)
-                .addToBackStack(null)
-                .commit();
-
+    // Method to update the searchResults list and refresh the adapter
+    private void updateSearchResults(List<SearchResultItem> newResults) {
+        searchResults.clear();
+        searchResults.addAll(newResults);
+        adapter.notifyDataSetChanged();
     }
 
+    // Inner RecyclerView adapter class for displaying search results
+    private class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder> {
+
+        List<SearchResultItem> data;
+
+        SearchResultAdapter(List<SearchResultItem> data) {
+            this.data = data;
+        }
+
+        @NonNull
+        @Override
+        public SearchResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_result, parent, false);
+            return new SearchResultViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull SearchResultViewHolder holder, int position) {
+            SearchResultItem item = data.get(position);
+            holder.iconImageView.setImageResource(item.iconResId);
+            holder.textView.setText(item.text);
+
+            // Set click listener for each item
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "ok", Toast.LENGTH_SHORT).show();
+                     // Handle item click here
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return data.size();
+        }
+
+        // ViewHolder class for the search result item layout
+        class SearchResultViewHolder extends RecyclerView.ViewHolder {
+            ImageView iconImageView;
+            TextView textView;
+
+            SearchResultViewHolder(View itemView) {
+                super(itemView);
+                iconImageView = itemView.findViewById(R.id.resultIcon);
+                textView = itemView.findViewById(R.id.resultText);
+            }
+        }
+    }
+
+    // Inner class representing the search result item data
+    private static class SearchResultItem {
+        int iconResId;
+        String text;
+
+        SearchResultItem(int iconResId, String text) {
+            this.iconResId = iconResId;
+            this.text = text;
+        }
+    }
 }

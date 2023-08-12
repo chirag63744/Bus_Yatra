@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
     tools:context=".HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,10 +31,10 @@
             android:src="@drawable/menu_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.087"
+            app:layout_constraintHorizontal_bias="0.089"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.047" />
+            app:layout_constraintVertical_bias="0.033" />
 
         <ImageButton
             android:id="@+id/srch_bt"
@@ -43,10 +44,10 @@
             android:src="@drawable/search_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.915"
+            app:layout_constraintHorizontal_bias="0.918"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.047" />
+            app:layout_constraintVertical_bias="0.046" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -56,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.071"
+            app:layout_constraintVertical_bias="0.051"
             app:srcCompat="@drawable/busyatra" />
 
         <TextView
@@ -64,44 +65,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Hey, Kiruthik!"
+            android:text="Hey, Buddy!"
             android:textColor="#121111"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintHorizontal_bias="0.166"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.143" />
+            app:layout_constraintVertical_bias="0.149" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
-            android:text="Where your next trip going to be?"
+            android:text="Where is your next class scheduled ?"
             android:textColor="#121111"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.159"
+            app:layout_constraintHorizontal_bias="0.303"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.186" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/profile_pic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.874"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.148" />
+            app:layout_constraintVertical_bias="0.194" />
 
         <ImageButton
             android:id="@+id/loc_pick"

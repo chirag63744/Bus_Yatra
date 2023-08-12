@@ -31,28 +31,15 @@
             android:layout_height="wrap_content"
             android:background="@drawable/lg_bck"
             android:fontFamily="@font/nunitosans_bold"
-            android:text="Login"
+            android:text="Welcome"
             android:textColor="#FBFAFA"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.656" />
+            app:layout_constraintVertical_bias="0.669" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/sg_bck"
-            android:fontFamily="@font/nunitosans_bold"
-            android:text="Sign up"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.165" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

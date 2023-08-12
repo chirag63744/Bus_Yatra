@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
         pick_loc = (ImageButton) root.findViewById(R.id.loc_pick);
         menu = (ImageButton) root.findViewById(R.id.menu_bt);
         search = (ImageButton) root.findViewById(R.id.srch_bt);
-        replaceFragment3(new InitialllMapsFragment());
+        replaceFragment3(new SearchRoute());
         pick_loc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
